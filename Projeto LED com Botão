@@ -1,0 +1,28 @@
+int estado = 0;
+int ultEstado = 0;
+int cliques = 0;
+void setup()
+{
+  pinMode(2, INPUT);
+  Serial.begin(9600);
+  pinMode(3, OUTPUT);
+}
+void loop()
+{  
+estado = digitalRead(2);
+  if (estado != ultEstado) {
+    if (estado == HIGH) {
+      cliques += 1;
+      Serial.println("ligado");
+      Serial.print("cliques: ");
+      Serial.println(cliques);
+      digitalWrite(3, HIGH);
+    } else {
+      Serial.println("desligado");
+      digitalWrite(3, LOW);
+      
+    }
+    delay(10); 
+  }
+  ultEstado = estado;
+}
