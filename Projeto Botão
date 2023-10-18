@@ -1,0 +1,26 @@
+int estado = 0;
+int ultEstado = 0;
+int cliques = 0;
+void setup()
+{
+  pinMode(2, INPUT);
+  Serial.begin(9600);
+  pinMode(LED_BUILTIN, OUTPUT);
+}
+
+void loop()
+{  
+estado = digitalRead(2);
+  if (estado != ultEstado) {
+    if (estado == HIGH) {
+      cliques += 1;
+      Serial.println("ligado");
+      Serial.print("cliques: ");
+      Serial.println(cliques);
+    } else {
+      Serial.println("desligado");
+    }
+    delay(10); 
+  }
+  ultEstado = estado;
+}
