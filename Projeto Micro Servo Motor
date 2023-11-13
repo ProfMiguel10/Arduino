@@ -1,0 +1,32 @@
+#include <Servo.h>
+
+Servo microServoMotor;
+int grau = 0;
+void setup()
+{
+  microServoMotor.attach(10);  
+  pinMode(2,INPUT);
+  pinMode(3, INPUT);
+  microServoMotor.write(0);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  if (digitalRead(3) == HIGH )  
+  { grau += 1;
+    if (grau > 180)
+      grau =180;
+   delay(10);
+  	microServoMotor.write(grau);
+  } 
+  else if (digitalRead(2) == HIGH)
+  {
+    grau -= 1;
+    if (grau<0)
+    	grau = 0; 
+    delay(10);
+    microServoMotor.write(grau); 
+  }
+  Serial.println(grau);
+}
