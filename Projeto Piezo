@@ -1,0 +1,21 @@
+void setup()
+{
+  pinMode(A0, INPUT);
+  pinMode(A1, INPUT);
+  pinMode(A2, INPUT);
+  pinMode(13, OUTPUT);
+}
+
+void loop()
+{
+  if (digitalRead(A0) == HIGH) {
+    tone(13, 540, 100);
+  } 
+  else if (digitalRead(A1) == HIGH) {
+    tone(13, 594, 100); 
+  }
+  else if (digitalRead(A2) == HIGH) {
+    tone(13, 700, 100); 
+  }
+  delay(20); 
+}
