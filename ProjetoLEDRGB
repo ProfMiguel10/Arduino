@@ -1,0 +1,45 @@
+int estBtn1 = 0;
+int estBtn2 = 0;
+int estBtn3 = 0;
+
+void setup()
+{
+  pinMode(2, INPUT);
+  pinMode(3, INPUT);
+  pinMode(4, INPUT);
+  pinMode(13, OUTPUT);
+  pinMode(12, OUTPUT);
+  pinMode(11, OUTPUT);
+}
+
+void loop()
+{
+  estBtn1 = digitalRead(2);
+  estBtn2 = digitalRead(3);
+  estBtn3 = digitalRead(4);
+  
+ if(estBtn1 == HIGH)  
+  {
+    digitalWrite(11, HIGH); 
+  }
+ else 
+  {
+    digitalWrite(11, LOW); 
+  }
+ if(estBtn2 == HIGH)
+  {
+    digitalWrite(12, HIGH);
+  }
+ else
+  {
+    digitalWrite(12, LOW);
+  }
+ if(estBtn3 == HIGH)
+   {
+    digitalWrite(13, HIGH);
+  }
+ else
+  {
+    digitalWrite(13, LOW);
+  }
+}
