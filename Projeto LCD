@@ -5,7 +5,7 @@ Adafruit_LiquidCrystal lcd(0);
 void setup()
 {
   lcd.begin(16, 2);
-  lcd.print("Gran Faculdade");
+  lcd.print("Tecnologia");
 }
 
 void loop()
