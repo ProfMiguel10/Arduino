@@ -1,0 +1,29 @@
+int in = 0;
+int cm = 0;
+long leituraSensorUtl(int pin, int echo)
+{
+  pinMode(pin, OUTPUT); 
+  digitalWrite(pin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(pin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(pin, LOW);
+  pinMode(echo, INPUT);
+  return pulseIn(echo, HIGH);
+}
+
+void setup()
+{
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  cm = 0.01723 * leituraSensorUtl(13, 13);
+  in = (cm / 2.54);
+  Serial.print("in: ");
+  Serial.print(in);
+  Serial.print("cm: ");
+  Serial.println(cm);
+  delay(100); 
+}
