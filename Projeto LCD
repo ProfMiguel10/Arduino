@@ -1,0 +1,33 @@
+#include <Adafruit_LiquidCrystal.h>
+
+Adafruit_LiquidCrystal lcd(0);
+
+void setup()
+{
+  lcd.begin(16, 2);
+  lcd.print("Gran Faculdade");
+}
+
+void loop()
+{
+  lcd.setCursor(0, 1);
+  lcd.print("                ");
+  lcd.setCursor(0, 1);
+  lcd.print("Prof. Miguel");
+  delay(1000);
+  lcd.setCursor(0, 1);
+  lcd.print("                ");
+  lcd.setCursor(0, 1);
+  lcd.print("Prof. Stella");
+  delay(1000); 
+  lcd.setCursor(0, 1);
+  lcd.print("                ");
+  lcd.setCursor(0, 1);
+  lcd.print("Prof. Igor");
+  delay(1000);
+  lcd.setCursor(0, 1);
+  lcd.print("                ");
+  lcd.setCursor(0, 1);
+  lcd.print("Prof. Diogo");
+  delay(1000); 
+}
