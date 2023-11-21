@@ -1,0 +1,39 @@
+#include "Adafruit_LEDBackpack.h"
+#include <IRremote.h>
+int botao = 0;
+Adafruit_7segment display = Adafruit_7segment();
+int leInfraVer() {
+  int result = -1;
+  if (IrReceiver.decode()) {
+    unsigned long code = IrReceiver.decodedIRData.decodedRawData;
+    
+    if ((code & 0x0000FFFF) == 0x0000BF00) {
+    code >>= 16;
+    if (((code >> 8) ^ (code & 0x00FF)) == 0x00FF) {
+     result = code & 0xFF;
+    }
+  }
+   else
+   {
+     result = -1;
+   } 
+   IrReceiver.resume();
+ }
+  return result;
+}
+void setup()
+{
+  display.begin(112);
+  IrReceiver.begin(13);
+  display.println("0");
+  display.writeDisplay();
+}
+void loop()
+{
+  botao = leInfraVer();
+  if (botao >= 0) {
+    display.println(botao);
+    display.writeDisplay();
+  }
+  delay(10);
+}
