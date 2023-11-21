@@ -1,1 +1,20 @@
+int sensorValor = 0;
+int outputValor = 0;
 
+void setup()
+{
+  pinMode(A0, INPUT);
+  pinMode(5, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  outputValor = map(sensorValor, 0, 1023, 0, 255);
+  sensorValor = analogRead(A0);
+  analogWrite(5, outputValor);
+  Serial.print(sensorValor);
+  Serial.print("=");
+  Serial.println(outputValor);
+  delay(1);
+}
